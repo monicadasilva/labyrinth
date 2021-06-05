@@ -1,0 +1,96 @@
+html, body, div{
+    border: 0;
+    margin: 0;
+    padding: 0;
+}
+body{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    /* flex-direction: column; */
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    background-color: black;
+    transition: 0.1s;
+
+}
+
+#map-box{
+    display: flex;
+    flex-flow: row wrap;
+    width: 100vw;
+    height: 100vh;
+}
+
+.box{
+    width: 4.761%;
+    height: 6.67%;
+}
+.wall{
+    background-image: url("../imgs/walls.png");
+    background-position: center;
+    background-size: 30px;
+    color: transparent;
+     /* background-color: green; */
+}
+.floor{
+    background-image: url("../imgs/floor.png");
+    background-position: center;
+    opacity: 80%;
+    background-size: 8px;
+    z-index: -1;
+}
+.walls{
+    
+
+    position: absolute;
+    z-index: 10;
+
+}
+.items{
+    position: absolute;
+}
+.heartVessel{
+    position: absolute;
+    width: 20px;
+    top: 40px;
+    left: 85px;
+    transform: translate(90%, 95%);
+}
+.skeleton{
+    position: absolute;
+    width: 25px;
+    top: 5px;
+    right: -320px;
+    transform: translate(250%, 26%);
+}
+.skeleton2{
+    position: absolute;
+    width: 25px;
+    top: 260px;
+    left: 260px;
+    transform: translate(150%, 26%);
+}
+
+.life{
+    position: absolute;
+    width: 15px;
+    top: 90px;
+    left: 145px;
+    transform: translate(200%, 295%);
+}
+
+#box { 
+    width: 25px; 
+    height: 15px; 
+    position: absolute; 
+    background-image: url("../imgs/bat.gif");
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    transform: rotateZ(180deg);
+    border: 2px solid aqua;
+    left: 200px; 
+    top: 200px; 
+}
