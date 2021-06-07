@@ -1,22 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./src/css/style.css">
-    <title>Labirinto</title>
+    <title>Gothicvania Maze</title>
 </head>
+
 <body>
-    <main id="map-box">
+    <!-- <section id="startPage">
+        <div class="startBox">
+            <h1 class="title">Gothicvania</h1>
+            <h2 class="subtitle">Kenzie Acedemy</h2>
+
+            <a href="./index.html" class="start">Start</a>
+        </div>
+    </section> -->
+    <section id="map-box">
         <div id="box"></div>
         <div class="items">
-            <img src="./src/imgs/Heart_Vessel_Icon.png" alt="" class="heartVessel">
-            <img src="https://i.gifer.com/WME8.gif" alt="" class="skeleton">
-            <img src="https://i.gifer.com/WME8.gif" alt="" class="skeleton2">
-            <img src="./src/imgs/Life_Vessel_Icon.png" alt="" class="life">
+            <span class="life"></span>
+            <span class="enemy skt1"> </span>
+            <span class="enemy skt2"> </span>
+            <span class="enemy skt3"> </span>
+            <span class="sodier"></span>
+            <span class="key"></span>
+            <span class="wall door"></span>
+            <span class="wall block"></span>
+            <span class="win"></span>
         </div>
-    </main>
+    </section>
+    <!-- <section id="winPage">
+        <div class="winBox">
+            <span class="beam beam1"></span>
+            <h1 class="winTitle">You win!!!</h1>
+            <span class="beam beam2"></span>
+            <button class="reset">Restart</button>
+        </div>
+    </section> -->
     <script src="./src/js/script.js"></script>
 </body>
+
 </html>

@@ -1,96 +1,358 @@
-html, body, div{
+html,
+body,
+div,
+button {
     border: 0;
     margin: 0;
     padding: 0;
+    font-size: 100%;
+    font-family: 'Bitmgothic';
 }
-body{
+
+body {
     width: 100vw;
     height: 100vh;
     display: flex;
-    /* flex-direction: column; */
     justify-content: center;
     align-items: center;
     overflow: hidden;
     background-color: black;
-    transition: 0.1s;
+    transition: 0.2s;
 
 }
 
-#map-box{
+:root {
+    --font-color: rgb(255, 187, 49);
+    --font-second-color: rgb(175, 29, 59);
+    --bg-color: rgb(39, 38, 56);
+}
+
+@font-face {
+    font-family: 'Bitmgothic';
+    src: url("../assets/fonts/Bitmgothic.ttf")
+}
+
+#startPage {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--bg-color);
+    background-image: url("../assets/imgs/home.png");
+    background-repeat: no-repeat;
+    background-size: 40%;
+    background-position: center;
+    align-items: center;
+    justify-content: center;
+}
+
+#startBox {
+    display: flex;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+}
+
+.title {
+    font-size: 9rem;
+    color: var(--font-color);
+    text-shadow: -10px 2px 0px rgba(175, 29, 59, 1);
+    font-weight: lighter;
+}
+
+.subtitle {
+    font-size: 2rem;
+    color: var(--font-color);
+    text-shadow: 2px 2px 0px rgba(175, 29, 59, 1);
+    position: absolute;
+    top: 350px;
+    left: 800px;
+}
+
+.start {
+    background: transparent;
+    font-size: 2rem;
+    color: var(--font-color);
+    text-shadow: 2px 2px 0px rgba(175, 29, 59, 1);
+    width: 150px;
+    height: 50px;
+    animation: blink 0.6s ease-in-out infinite;
+    opacity: 1;
+    position: absolute;
+    left: 40%;
+    z-index: 2000;
+}
+
+@keyframes blink {
+    0% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.5
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+#map-box {
     display: flex;
     flex-flow: row wrap;
     width: 100vw;
     height: 100vh;
 }
 
-.box{
+.box {
     width: 4.761%;
     height: 6.67%;
 }
-.wall{
-    background-image: url("../imgs/walls.png");
-    background-position: center;
-    background-size: 30px;
-    color: transparent;
-     /* background-color: green; */
-}
-.floor{
-    background-image: url("../imgs/floor.png");
-    background-position: center;
-    opacity: 80%;
-    background-size: 8px;
-    z-index: -1;
-}
-.walls{
-    
 
+.wall {
+    background-image: url("../assets/imgs/walls.png");
+    background-position: center;
+    background-size: 50px;
+    color: transparent;
+}
+
+.block {
+    width: 80px;
+    height: 45px;
+    position: absolute;
+    background-image: none;
+    top: 380px;
+    left: -60px;
+    /* background-color: var(--bg-color); */
+    /* opacity: 100; */
+}
+
+.walls {
     position: absolute;
     z-index: 10;
+}
+
+.floor {
+    background-image: url("../assets/imgs/floor.png");
+    background-position: center;
+    opacity: 80%;
+    background-size: 25px;
+    z-index: -1;
+}
+
+.items {
+    position: absolute;
+}
+
+
+.skt1 {
+    top: 195px;
+    right: -780px;
+    transform: rotateY(180deg);
+    animation: 5s infinite enemyMove2;
 
 }
-.items{
-    position: absolute;
+
+.skt2 {
+    top: 195px;
+    left: 600px;
+    animation: 9s infinite enemyMove3;
 }
-.heartVessel{
-    position: absolute;
+
+.skt3 {
+    top: 360px;
+    left: 350px;
+    animation: 5s infinite enemyMove;
+}
+
+.enemy {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
     width: 20px;
-    top: 40px;
-    left: 85px;
-    transform: translate(90%, 95%);
-}
-.skeleton{
+    height: 40px;
     position: absolute;
-    width: 25px;
-    top: 5px;
-    right: -320px;
-    transform: translate(250%, 26%);
-}
-.skeleton2{
-    position: absolute;
-    width: 25px;
-    top: 260px;
-    left: 260px;
-    transform: translate(150%, 26%);
 }
 
-.life{
-    position: absolute;
-    width: 15px;
-    top: 90px;
-    left: 145px;
-    transform: translate(200%, 295%);
-}
-
-#box { 
-    width: 25px; 
-    height: 15px; 
-    position: absolute; 
-    background-image: url("../imgs/bat.gif");
+.enemy::after {
+    content: "";
+    width: 65px;
+    height: 60px;
+    background-image: url("../assets/imgs/burning-ghoul-preview.gif");
     background-size: 100%;
     background-repeat: no-repeat;
     background-position: center;
+    position: absolute;
+}
+
+@keyframes enemyMove {
+    0% {
+        transform: translate(0%) rotateY(0deg);
+    }
+
+    49% {
+        transform: translate(-1260%) rotateY(0deg);
+    }
+
+    50% {
+        transform: translate(-1260%) rotateY(180deg);
+    }
+
+    100% {
+        transform: translate(0%) rotateY(180deg);
+    }
+}
+
+@keyframes enemyMove2 {
+    0% {
+        transform: translate(0%) rotateY(180deg);
+    }
+
+    49% {
+        transform: translate(1100%) rotateY(180deg);
+    }
+
+    50% {
+        transform: translate(1100%) rotateY(0deg);
+    }
+
+    100% {
+        transform: translate(0%) rotateY(0deg);
+    }
+}
+
+@keyframes enemyMove3 {
+    0% {
+        transform: translate(0%) rotateY(0deg);
+    }
+
+    49% {
+        transform: translate(-1400%) rotateY(0deg);
+    }
+
+    50% {
+        transform: translate(-1400%) rotateY(180deg);
+    }
+
+    100% {
+        transform: translate(0%) rotateY(180deg);
+    }
+}
+
+
+.sodier {
+    width: 45px;
+    height: 60px;
+    background-image: url("../assets/imgs/lost_sodier.gif");
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: absolute;
+    top: 460px;
+    left: 450px;
+
+}
+
+.key {
+    width: 35px;
+    height: 30px;
+    background-image: url("../assets/imgs/golden_key.png");
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: absolute;
+    top: 555px;
+    left: 450px;
+
+}
+
+.door {
+    width: 50px;
+    height: 40px;
+    position: absolute;
+    background-image: none;
+    top: 340px;
+    left: 1300px;
+    opacity: 100;
+}
+
+.door::after {
+    content: "";
+    width: 10px;
+    height: 40px;
+    background-image: url("../assets/imgs/door.png");
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: absolute;
+}
+
+.life {
+    background-image: url("../assets/imgs/Heart_Vessel_Icon.png");
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    top: 135px;
+    left: 210px;
+}
+
+#box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    position: absolute;
     transform: rotateZ(180deg);
-    border: 2px solid aqua;
-    left: 200px; 
-    top: 200px; 
+    left: 10px;
+    top: 388px;
+}
+
+#box::before {
+    content: "";
+    width: 65px;
+    height: 65px;
+    position: absolute;
+}
+
+#box::after {
+    content: "";
+    width: 65px;
+    height: 65px;
+    position: absolute;
+    background-image: url("../assets/imgs/bat.gif");
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+
+@keyframes blink2 {
+    0% {
+        opacity: 20%;
+    }
+
+    50% {
+        opacity: 10%;
+    }
+
+    100% {
+        opacity: 20%;
+    }
+}
+
+.win {
+    width: 40px;
+    height: 45px;
+    position: absolute;
+    background-image: none;
+    top: 340px;
+    left: 1330px;
+    /* background-color: black; */
+}
+
+#winPage {
+    display: none;
 }
