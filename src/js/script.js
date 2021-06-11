@@ -1,4 +1,17 @@
-'use strict';
+let startBtn = document.getElementById("start");
+startBtn.addEventListener("click", () => {
+    let startPage = document.getElementById("startPage");
+    startPage.style.display = "none";
+    let winPage = document.getElementById("winPage")
+    winPage.style.display = "none";
+});
+
+let restartbtn = document.getElementById("restart");
+restartbtn.addEventListener("click", () => {
+
+    location.reload()
+
+});
 const mapBox = document.getElementById("map-box")
 let playerBox = document.getElementById("box")
 // informaçãoes referentes ao player
@@ -108,12 +121,11 @@ let playerCollision = (player, wall) => {
             door.style.display = "none";
             door.className.remove("wall")
         }
-        // if (wall.type === "win") {
-        //     let winPage = document.getElementById("winPage")[0];
-        //     let winnnerBox = document.getElementById("map-box")[0];
-        //     winPage.style.display = "flex";
-        //     winnnerBox.style.display = "none";
-        // }
+        if (wall.type === "win") {
+            mapBox.style.display = "none";
+            let winPage = document.getElementById("winPage")
+            winPage.style.display = "flex";
+        }
 
     }
 }
@@ -125,17 +137,15 @@ let getProperties = (arr, type) => arr.map(entinty => {
 });
 
 
-// let winner = [...document.getElementsByClassName("win")];
-// let winnerProperties = getProperties(winner, "win")
-// console.log(winnerProperties);
-
-
 let life = [...document.getElementsByClassName("life")];
 let lifeProperties = getProperties(life, "life")
 
 let keys = [...document.getElementsByClassName("key")];
 let keysProperties = getProperties(keys, "key")
 
+let wins = [...document.getElementsByClassName("win")];
+let winsProperties = getProperties(wins, "win")
+console.log(winsProperties);
 
 
 let updatePosition = () => {
@@ -158,7 +168,7 @@ let updatePosition = () => {
 
 
     let allProperties = [
-        // ...winnerProperties,
+        ...winsProperties,
         ...keysProperties,
         ...lifeProperties,
         ...enemyProperties,
