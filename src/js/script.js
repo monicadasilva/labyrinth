@@ -85,7 +85,6 @@ let playerCollision = (player, wall) => {
     let sumHeight = (player.height + wall.height) / 2;
 
     if (Math.abs(rangeA) < sumWidth && Math.abs(rangeB) < sumHeight) {
-        console.log(wall);
         if (wall.type === "wall") {
             let overLapA = sumWidth - Math.abs(rangeA);
             let overLapB = sumHeight - Math.abs(rangeB);
@@ -119,7 +118,8 @@ let playerCollision = (player, wall) => {
             let door = document.getElementsByClassName("door")[0];
             keyImg.style.display = "none";
             door.style.display = "none";
-            door.className.remove("wall")
+            door.classList.remove("wall")
+            // alterado de classname para o correto classlist
         }
         if (wall.type === "win") {
             mapBox.style.display = "none";
@@ -145,7 +145,6 @@ let keysProperties = getProperties(keys, "key")
 
 let wins = [...document.getElementsByClassName("win")];
 let winsProperties = getProperties(wins, "win")
-console.log(winsProperties);
 
 
 let updatePosition = () => {
